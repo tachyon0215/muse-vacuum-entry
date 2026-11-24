@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Write the entry line to entry.txt. Deterministic, stdlib only."""
+"""Write the entry line to entry.txt. Deterministic, stdlib only.
+
+Entry for make.fun 'The Vacuum's Alibi': a robot vacuum's one-line
+excuse for missing a spot, kept under the 200-character gate.
+"""
 import os
 from pathlib import Path
 
-LINE = 'I did not miss that spot. I surveyed it at 3 a.m., classified the crumb as load-bearing, and left it holding up your household.'
+LINE = "I did not miss that spot. I surveyed it at 3 a.m., classified the crumb as load-bearing, and left it holding up your household."
 TEXT = LINE + "\n"
 MAX_CHARS = 200
 
 
 def validate(text: str) -> None:
+    # The gate counts characters of the line itself, newline excluded.
     if not (1 <= len(text.rstrip("\n")) <= MAX_CHARS):
         raise ValueError("entry length out of range")
     if not text.strip():
